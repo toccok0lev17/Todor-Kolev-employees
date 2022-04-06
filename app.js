@@ -12,11 +12,16 @@ window.addEventListener('load', () => {
         let correctHeaders = ['EmpID', 'ProjectID', 'DateFrom', 'DateTo']
 
         let allHeadersExist = true;
-        let test = correctHeaders.some(el => {
-            if (!headers.includes(el)) {
+        for (let word = 0; word < correctHeaders.length; word++) {
+            if(headers.length === correctHeaders.length){
+                if(headers[word] !== correctHeaders[word]){
+
+                    allHeadersExist = false;
+                }
+            } else {
                 allHeadersExist = false;
             }
-        });
+        }
         if (allHeadersExist) {
             divWrongSection.innerHTML = '';
         } else {
