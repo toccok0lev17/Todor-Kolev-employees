@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV file load</title>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>CSV File Loader!</h1>
+        <h3>By Todor Kolev</h3>
+        <form id="myForm">
+            <input type="file" id="csvFile" accept=".csv" />
+            <br />
+            <input type="submit" value="Submit" />
+          </form>
+        <h2 id="wrongFile" style="color: red; display: none;">
+            Only .CSV files supported!
+            Please choose .CSV file!</h2>
+    </div>
+
+    <div id="container">
+
+    </div>
+
+</body>
+
+</html>
