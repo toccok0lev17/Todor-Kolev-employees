@@ -1,11 +1,27 @@
 window.addEventListener('load', () => {
     const myForm = document.getElementById("myForm");
     const csvFile = document.getElementById("csvFile");
+    let divWrongSection = document.getElementById('wrongCSV');
+
+
 
     function csvToArray(str, delimiter = ",") {
 
         let headers = str.slice(0, str.indexOf("\n")).split(delimiter);
         headers = headers[0].replace('\r', '').split(';');
+        let correctHeaders = ['EmpID', 'ProjectID', 'DateFrom', 'DateTo']
+
+        let allHeadersExist = true;
+        let test = correctHeaders.some(el => {
+            if (!headers.includes(el)) {
+                allHeadersExist = false;
+            }
+        });
+        if (allHeadersExist) {
+            divWrongSection.innerHTML = '';
+        } else {
+            return wrongCSV();
+        }
 
 
         let rows = str.slice(str.indexOf("\n") + 1).split("\n");
@@ -237,6 +253,18 @@ window.addEventListener('load', () => {
     function onClickRemoveTable(e) {
         e.preventDefault();
         e.target.parentElement.remove()
+    }
+
+    function wrongCSV() {
+        let wrongCsvMessage = document.createElement('h1');
+        wrongCsvMessage.textContent = 'Wrong CSV File!'
+        wrongCsvMessage.style.color = 'red';
+        let h3 = document.createElement('h3')
+        h3.textContent = 'You need to use CSV with headers: [ EmpID, ProjectID, DateFrom, DateTo ]. Please check if headers of the CSV file correspond to the sequence and are the same!';
+
+
+        divWrongSection.appendChild(wrongCsvMessage);
+        divWrongSection.appendChild(h3);
     }
 
 })
