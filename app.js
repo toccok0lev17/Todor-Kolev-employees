@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
     const myForm = document.getElementById("myForm");
     const csvFile = document.getElementById("csvFile");
-    let divWrongSection = document.getElementById('wrongCSV');
+    
 
 
 
@@ -23,7 +23,7 @@ window.addEventListener('load', () => {
             }
         }
         if (allHeadersExist) {
-            divWrongSection.innerHTML = '';
+            document.getElementById('wrongCSV').innerHTML = '';
         } else {
             return wrongCSV();
         }
@@ -268,6 +268,7 @@ window.addEventListener('load', () => {
         h3.textContent = 'You need to use CSV with headers: [ EmpID, ProjectID, DateFrom, DateTo ]. Please check if headers of the CSV file correspond to the sequence and are the same!';
 
 
+        let divWrongSection = document.getElementById('wrongCSV');
         divWrongSection.appendChild(wrongCsvMessage);
         divWrongSection.appendChild(h3);
     }
